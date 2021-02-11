@@ -11,49 +11,44 @@ function App() {
 
   const [tasks,setTasks]=useState([])
 
-  useEffect(()=>{
-    const getTasks=async()=>{
-      const taskFromServer=await fetchtasks();
-      setTasks(taskFromServer)
-    }
+
+  useEffect(()=>{  
     getTasks();
   },[])
 
+  const getTasks=async()=>{
+    const taskFromServer=await fetchtasks();
+    setTasks(taskFromServer)
+  }
+
 //Fetch task
 const fetchtasks=async()=>{
-  const res= await fetch('http://localhost:5000/tasks')
+  const res= await fetch('http://localhost:4000/task')
   const data= await res.json();
-  return data;
+  return data.recordset;
 }
 
 //Fetch single  task
 const fetchtask=async(id)=>{
-  const res= await fetch(`http://localhost:5000/tasks/${id}`)
+  const res= await fetch(`http://localhost:4000/task/${id}`)
   const data= await res.json();
-  return data;
+  return data.recordset[0];
 }
 
 //Toggele reminder
 const toggleReminder=async (id)=>{
     const taskToToggele=await fetchtask(id)
     const upTask = { ...taskToToggele,
-        reminder:!taskToToggele.reminder }
+        Reminder:!taskToToggele.Reminder }
 
-  const res =await fetch(`http://localhost:5000/tasks/${id}`,{
-    method:'PUT',
-    headers:{
-      'Content-type':'application/json'
-    },
-    body: JSON.stringify(upTask),
-  })
-
-  const data=await res.json();
-
-  setTasks(
-    tasks.map((task)=> 
-    task.id===id ? {...task,reminder:data.reminder }:task
-    )
-    )
+    const res =await fetch(`http://localhost:4000/task/${id}`,{
+      method:'PUT',
+      headers:{
+        'Content-type':'application/json'
+      },
+      body: JSON.stringify(upTask),
+    })
+    getTasks();
 }
 
 //Add task
@@ -62,7 +57,7 @@ const addtask=async (task)=>{
   // const newtask={id,...tasks};
   // setTasks([...tasks,newtask]);
 
-  const res=await fetch(`http://localhost:5000/tasks`,
+  const res=await fetch(`http://localhost:4000/task`,
   {
     method:'POST',
     headers:{
@@ -70,19 +65,15 @@ const addtask=async (task)=>{
     },
     body:JSON.stringify(task)
   })
-   
-  const data= await res.json();
-
-  setTasks([...tasks,data]);
+  getTasks();
 };
 
 //Delete task
 const deleteTask=async (id)=>  {
-  await fetch(`http://localhost:5000/tasks/${id}`,{
+  await fetch(`http://localhost:4000/task/${id}`,{
     method:'Delete'
   })
-
-  setTasks(tasks.filter((task)=> task.id!==id)) 
+  getTasks();
 }
 
   return (

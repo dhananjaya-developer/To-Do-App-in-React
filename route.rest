@@ -1,0 +1,14 @@
+POST  http://localhost:4000/task/
+Content-Type: application/json
+
+{
+     "text":"Amazin",
+    "day":"Web dev",
+    "reminder":true
+}
+
+###
+DELETE  http://localhost:4000/task/ee
+
+###
+GET http://localhost:4000/task/76a7AU              

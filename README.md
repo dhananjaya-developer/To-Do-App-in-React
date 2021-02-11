@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Using SQL server as database
 
 ## Available Scripts
 
@@ -12,14 +10,14 @@ In the project directory, you can run:
 
 Deployment on local server
 
-Step1 : Build react app using `npm run build`
+Step1 : Follow the steps to setup sql server https://medium.com/zero-equals-false/how-to-connect-node-js-app-with-sql-server-18a176afae46
 
-Step2 : Run command `npm i -g serve`
+Step2 : Create database table with https://github.com/dhananjaya-developer/LearningReactApp/blob/with-SQL-Server/task-tracker/webserver/databaseQuery/CreateTable.sql
 
-Step3 : Run command  `serve -s build -p 15000`
+Step3 : Update the dbConfig in https://github.com/dhananjaya-developer/LearningReactApp/blob/with-SQL-Server/task-tracker/webserver/routers/Task.js
 
 
-### Start JSON server
+### Start SQL server
 `npm run server`
 
 ### To Install dependencies Package.json
