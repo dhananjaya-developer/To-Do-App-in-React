@@ -6,7 +6,6 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "json-server": "^0.16.3",
     "mongoose": "^5.11.15",
@@ -26,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon ./webserver/server.js"
+    "server": "nodemon ./server/server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +44,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "type": "module"
+  }
 }

@@ -1,14 +1,14 @@
-import express from 'express';
+const express = require('express')
+const mongoose = require('mongoose')
+require('dotenv').config()
 const app = express()
-mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser:true,useUnifiedTopology: true});
 
-const db=mongoose.connection;
-db.on('error',(error)=>console.log(error))
-db.once('open',()=>console.log('connected to database'))
+const db=require('./DB/connection')
+db();
     
 app.use(express.json())
     
-const subscribeRouter=require('./routers/TaskApi')
+const subscribeRouter=require('./routers/TaskApis')
 app.use('/task',subscribeRouter)
 
 
