@@ -11,14 +11,14 @@ function App() {
 
   const [tasks,setTasks]=useState([])
 
-  const getTasks=async()=>{
-    const taskFromServer=await fetchtasks();
-    setTasks(taskFromServer)
-  }
+
 
   useEffect(()=>{
-    getTasks();
-    
+    const getTasks=async()=>{
+      const taskFromServer=await fetchtasks();
+      setTasks(taskFromServer)
+    }
+    getTasks();   
   },[])
 
 //Fetch task

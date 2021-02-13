@@ -5,14 +5,14 @@ const Task = require("../model/TaskSchema");
 router.get("/", async (req, res) => {
   try {
     const tasks = await Task.find();
-    res.json(tasks);
+    res.status(200).json(tasks);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
 router.get('/:id',getSubscriber, (req,res)=>{
-    res.send(res.task);
+    res.status(200).send(res.task);
 });
 
 router.post('/',async (req,res)=>{
@@ -21,9 +21,7 @@ router.post('/',async (req,res)=>{
     task.name = name;
     task.reminder = reminder;
     task.taskDate=taskDate;
-    console.log(task)
     const taskModel = new Task(task);
-    // await taskModel.save();
     try {
       await taskModel.save();
       res.status(200).json(taskModel);
@@ -43,8 +41,8 @@ router.put('/:id',getSubscriber,async(req,res)=>{
           res.task.taskDate=req.body.taskDate;
       }
       try {
-        const updateduser = await res.task.save();
-        res.json(updateduser);
+        const updatedTask = await res.task.save();
+        res.status(200).json(updatedTask);
       } catch (err) {
         res.status(400).json({ message: err.message });
       }
@@ -54,7 +52,7 @@ router.put('/:id',getSubscriber,async(req,res)=>{
 router.delete("/:id", getSubscriber, async (req, res) => {
   try {
     await res.task.deleteOne();
-    res.json({ message: "Deleted Subscriber" });
+    res.status(200).json({ message: "task deleted" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -69,7 +67,6 @@ async function getSubscriber(req, res, next) {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-
   res.task = task;
   next();
 }
