@@ -49,9 +49,13 @@ const toggleReminder=async (id)=>{
     body: JSON.stringify(upTask),
   })
 
-  //const data=await res.json();
+  const data=await res.json();
 
-  getTasks();
+  setTasks(
+    tasks.map((task)=> 
+    task._id===id ? {...task,reminder:data.reminder }:task
+    )
+    )
 }
 
 //Add task
@@ -79,8 +83,8 @@ const deleteTask=async (id)=>  {
   await fetch(`http://localhost:4000/task/${id}`,{
     method:'Delete'
   })
-  //setTasks(tasks.filter(task=>task.id!==id));
-  getTasks();
+  setTasks(tasks.filter(task=>task._id!==id));
+  //getTasks();
 }
 
   return (
