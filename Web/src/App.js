@@ -18,6 +18,7 @@ function App() {
 
   useEffect(()=>{
     getTasks();
+    
   },[])
 
 //Fetch task
@@ -48,13 +49,9 @@ const toggleReminder=async (id)=>{
     body: JSON.stringify(upTask),
   })
 
-  const data=await res.json();
+  //const data=await res.json();
 
-  setTasks(
-    tasks.map((task)=> 
-    task.id===id ? {...task,reminder:data.reminder }:task
-    )
-    )
+  getTasks();
 }
 
 //Add task
@@ -82,8 +79,8 @@ const deleteTask=async (id)=>  {
   await fetch(`http://localhost:4000/task/${id}`,{
     method:'Delete'
   })
-
-  setTasks(tasks.filter((task)=> task.id!==id)) 
+  //setTasks(tasks.filter(task=>task.id!==id));
+  getTasks();
 }
 
   return (

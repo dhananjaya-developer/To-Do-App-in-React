@@ -26,13 +26,13 @@ router.post('/',async (req,res)=>{
     // await taskModel.save();
     try {
       await taskModel.save();
-      res.status(200).json(task);
+      res.status(200).json(taskModel);
     } catch (err) {
       res.status(400).json({ message: err.message });
     }
 });
 
-router.patch('/:id',getSubscriber,async(req,res)=>{
+router.put('/:id',getSubscriber,async(req,res)=>{
     if (req.body.name != null) {
         res.task.name = req.body.name;
       }
@@ -53,7 +53,7 @@ router.patch('/:id',getSubscriber,async(req,res)=>{
 // // Deleting One
 router.delete("/:id", getSubscriber, async (req, res) => {
   try {
-    await res.task.remove();
+    await res.task.deleteOne();
     res.json({ message: "Deleted Subscriber" });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -65,7 +65,7 @@ async function getSubscriber(req, res, next) {
   try {
     task = await Task.findById(req.params.id);
     if (task === null)
-      return res.status(404).json({ message: "Cannot find subscriber" });
+      return res.status(404).json({ message: "Cannot find task" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

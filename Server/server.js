@@ -1,17 +1,16 @@
 const express = require('express')
-const mongoose = require('mongoose')
-require('dotenv').config()
 const app = express()
 var cors = require('cors')
 
 const db=require('./DB/connection')
 db();
 
-app.use(cors)
+app.use(cors())
 app.use(express.json())
     
-const subscribeRouter=require('./routers/TaskApis')
-app.use('/task',subscribeRouter)
+const task=require('./routers/TaskApis')
+app.use('/task',task)
+
 
 
 app.listen(4000,()=>console.log('Server started'))
