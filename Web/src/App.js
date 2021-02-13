@@ -11,25 +11,25 @@ function App() {
 
   const [tasks,setTasks]=useState([])
 
-  useEffect(()=>{
+  const getTasks=async()=>{
+    const taskFromServer=await fetchtasks();
+    setTasks(taskFromServer)
+  }
 
-    const getTasks=async()=>{
-      const taskFromServer=await fetchtasks();
-      setTasks(taskFromServer)
-    }
+  useEffect(()=>{
     getTasks();
   },[])
 
 //Fetch task
 const fetchtasks=async()=>{
-  const res= await fetch('http://localhost:5000/tasks')
+  const res= await fetch('http://localhost:4000/task')
   const data= await res.json();
   return data;
 }
 
 //Fetch single  task
 const fetchtask=async(id)=>{
-  const res= await fetch(`http://localhost:5000/tasks/${id}`)
+  const res= await fetch(`http://localhost:4000/task/${id}`)
   const data= await res.json();
   return data;
 }
@@ -40,7 +40,7 @@ const toggleReminder=async (id)=>{
     const upTask = { ...taskToToggele,
         reminder:!taskToToggele.reminder }
 
-  const res =await fetch(`http://localhost:5000/tasks/${id}`,{
+  const res =await fetch(`http://localhost:4000/task/${id}`,{
     method:'PUT',
     headers:{
       'Content-type':'application/json'
@@ -63,7 +63,7 @@ const addtask=async (task)=>{
   // const newtask={id,...tasks};
   // setTasks([...tasks,newtask]);
 
-  const res=await fetch(`http://localhost:5000/tasks`,
+  const res=await fetch(`http://localhost:4000/task`,
   {
     method:'POST',
     headers:{
@@ -79,7 +79,7 @@ const addtask=async (task)=>{
 
 //Delete task
 const deleteTask=async (id)=>  {
-  await fetch(`http://localhost:5000/tasks/${id}`,{
+  await fetch(`http://localhost:4000/task/${id}`,{
     method:'Delete'
   })
 
