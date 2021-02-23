@@ -2,15 +2,22 @@
   "name": "task-tracker",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7"
+  },
   "scripts": {
-    "start": "cd Web && npm start",
-    "build": "cd Web && npm build",
-    "test": "cd Web && npm test",
-    "eject": "cd Web && npm eject",
-    "startServer": "cd Server && npm start",
-    "buildServer": "cd Server && npm build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
