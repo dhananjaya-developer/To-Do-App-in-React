@@ -19,7 +19,7 @@
     "test": "cd Web && npm run-script test",
     "eject": "cd Web && npm run-script eject",
     "startServer": "cd Server && npm run-script start",
-    "buildServer": "cd Server && npm run-script build"
+    "buildServer": "NODE_ENV=production netlify-lambda build Server/src"
   },
   "eslintConfig": {
     "extends": [
