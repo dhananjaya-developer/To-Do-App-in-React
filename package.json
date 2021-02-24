@@ -2,7 +2,9 @@
   "name": "task-tracker",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "netlify-lambda": "^2.0.3"
+  },
   "devDependencies": {},
   "scripts": {
     "start": "cd Web && npm run-script start",
