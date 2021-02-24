@@ -5,12 +5,12 @@
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "start": "cd Web && npm start",
-    "build": "cd Web && npm build",
-    "test": "cd Web && npm test",
-    "eject": "cd Web && npm eject",
-    "startServer": "cd Server && npm start",
-    "buildServer": "cd Server && npm build"
+    "start": "cd Web && npm run-script start",
+    "build": "cd Web && npm run-script build",
+    "test": "cd Web && npm run-script test",
+    "eject": "cd Web && npm run-script eject",
+    "startServer": "cd Server && npm run-script start",
+    "buildServer": "cd Server && npm run-script build"
   },
   "eslintConfig": {
     "extends": [
