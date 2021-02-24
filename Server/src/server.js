@@ -7,7 +7,7 @@ const db=require('./DB/connection')
 db();
 
 app.use(cors())
-app.use(express.json())
+//app.use(express.json())
     
 const task=require('./routers/TaskApis')
 app.use('/.netlify/functions/server',task)
