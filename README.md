@@ -24,3 +24,5 @@ Step3 : Run command  `serve -s build -p 15000`
 
 ### To Install dependencies Package.json
 `npm install` or `sudo npm install`
+
+https://brave-murdock-46d903.netlify.app/.netlify/functions/server
