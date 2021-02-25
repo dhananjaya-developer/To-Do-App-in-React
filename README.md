@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# To do App with mongodb atlas server
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -24,3 +24,5 @@ Step3 : Run command  `serve -s build -p 15000`
 
 ### To Install dependencies Package.json
 `npm install` or `sudo npm install`
+
+https://brave-murdock-46d903.netlify.app/.netlify/functions/server
