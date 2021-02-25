@@ -1,5 +1,5 @@
 [build]
-  functions = "Server/functions"
+  functions = "functions"
 
 [dev]
   publish = "dist"
