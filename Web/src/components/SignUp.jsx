@@ -1,10 +1,6 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
 
-export default function Login() {
-  const a = () => {
-    console.log("a");
-  };
+const SignUp = () => {
   return (
     <div
       className="login-wrapper"
@@ -13,7 +9,7 @@ export default function Login() {
       <h1>Please Log In</h1>
       <div className="container row">
         <div className="jumbotron col-sm-4 pull-center">
-          <form onSubmit={a} action='/task'>
+          <form action="/signup" method="post">
             <div className="form-group">
               <label>Username:</label>
               <input
@@ -21,6 +17,15 @@ export default function Login() {
                 required
                 type="text"
                 name="username"
+              />
+            </div>
+            <div className="form-group">
+              <label>Email:</label>
+              <input
+                className="form-control"
+                required
+                type="email"
+                name="email"
               />
             </div>
             <div className="form-group">
@@ -33,17 +38,17 @@ export default function Login() {
               />
             </div>
             <div className="form-group">
-              {/* <Link to="/task"> */}
-                <input
-                  className="btn btn-primary"
-                  type="submit"
-                  value="Log In"
-                />
-              {/* </Link> */}
+              <input
+                className="btn btn-primary"
+                type="submit"
+                value="Sign Up"
+              />
             </div>
           </form>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default SignUp;

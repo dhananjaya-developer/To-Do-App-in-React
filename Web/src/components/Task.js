@@ -1,13 +1,10 @@
-import React from 'react'
-import AddTask from './Task/AddTask'
-import Tasks from './Task/Tasks'
-import {useState,useEffect} from 'react'
+import React from "react";
+import AddTask from "./Task/AddTask";
+import Tasks from "./Task/Tasks";
+import { useState, useEffect } from "react";
 
-const Task = ({showAddTask}) => {
-    
-    const [tasks, setTasks] = useState([]);
-
-
+const Task = ({ showAddTask }) => {
+  const [tasks, setTasks] = useState([]);
 
   //Fetch task
   const fetchtasks = async () => {
@@ -94,8 +91,12 @@ const Task = ({showAddTask}) => {
     //getTasks();
   };
 
-    return (
-        <>
+  return (
+    <div
+    className="login-wrapper"
+    style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+  >
+    <div className="container row">
         {showAddTask && <AddTask onAdd={addtask} />}
         {tasks.length > 0 ? (
           <Tasks
@@ -106,8 +107,9 @@ const Task = ({showAddTask}) => {
         ) : (
           "No task"
         )}
-      </>
-    )
-}
+    </div>
+    </div>
+  );
+};
 
-export default Task
+export default Task;
