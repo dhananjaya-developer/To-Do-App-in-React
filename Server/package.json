@@ -3,20 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "cors": "^2.8.5",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.11.15",
     "netlify-lambda": "^2.0.3",
-    "nodemon": "^2.0.7",
-    "serverless-http": "^2.7.0",
-    "dotenv": "^8.2.0"
+    "randomstring": "^1.1.5",
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "NODE_ENV=development netlify-lambda serve src",
+    "start": "netlify-lambda serve src",
     "build": "NODE_ENV=production netlify-lambda build src"
   },
   "eslintConfig": {

@@ -1,9 +1,13 @@
 const mongoose = require('mongoose')
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr('P@ssw0rd');
 
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true
+    required: true,
+    unique:true,
+    dropDups:true
   },
   password: {
     type: String,
@@ -13,6 +17,15 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: false
   }
-})
+});
 
-module.exports = mongoose.model('User', TaskSchema)
+UserSchema.pre("save", function(next) {
+  if(!this.isModified("password")) {
+      return next();
+  }
+  this.password = cryptr.encrypt(this.password);
+  next();
+});
+
+
+module.exports = mongoose.model('User', UserSchema)

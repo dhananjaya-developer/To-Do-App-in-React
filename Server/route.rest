@@ -1,17 +1,31 @@
 GET http://localhost:9000/.netlify/functions/server
 
 ###
-POST  https://brave-murdock-46d903.netlify.app/.netlify/functions/server
+POST  http://localhost:9000/.netlify/functions/server/signup
 Content-Type: application/json
 
 {
-    "name":"Amazing ppp",
-    "reminder":true,
-    "taskDate": "xx"
+    "username":"Amazing2",
+    "password":"trueqqqqq1111"
 }
 
 ###
-GET http://localhost:4000/task/60276feeedf1b7376053dd9f
+GET http://localhost:9000/.netlify/functions/server/login/
+Content-Type: application/json
+
+{
+    "username":"Amazing",
+    "password":"trueqqqqq1111"
+}
+
+###
+GET http://localhost:9000/.netlify/functions/server/session/
+Content-Type: application/json
+
+{
+    "username":"Amazing",
+    "token": "ssDaZGDvIMfDCSM5"
+}
 
 ###
 PATCH http://localhost:4000/task/60267fdddcc318592c4cdddb

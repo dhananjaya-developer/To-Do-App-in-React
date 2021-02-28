@@ -9,8 +9,8 @@ db();
 app.use(cors())
 app.use(express.json())
     
-const task=require('./routers/TaskAPI')
-app.use('/.netlify/functions/server',task)
+const user=require('./routers/ServerLoginAPI')
+app.use('/.netlify/functions/server',user)
 
 
 
