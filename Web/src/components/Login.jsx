@@ -1,17 +1,19 @@
 import {useState} from "react";
-import { Link, Redirect } from "react-router-dom";
+import {sessionGet,sessionSet} from '../sessionStorage'
 
 export default function Login() {
+  let sessio_id=sessionGet('user_token')
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const a = async () => {
+  const login = async () => {
     var user={}
     user.username=username;
     user.password=password;
     const res = await fetch(
       `https://tasktrackerserver.netlify.app/.netlify/functions/server/login`,
       {
-        method: "GET",
+        method: "POST",
         headers: {
           "Content-type": "application/json",
         },
@@ -20,6 +22,7 @@ export default function Login() {
     );
     const data=await res.json();
     if(data.token){
+      sessionSet('user_token',data.token);
       window.location='/task'
     }
   };
@@ -59,7 +62,7 @@ export default function Login() {
                   className="btn btn-primary"
                   type="submit"
                   value="Log In"
-                  onClick={a}
+                  onClick={login}
                 />
               {/* </Link> */}
             </div>

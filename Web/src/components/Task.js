@@ -2,9 +2,11 @@ import React from "react";
 import AddTask from "./Task/AddTask";
 import Tasks from "./Task/Tasks";
 import { useState, useEffect } from "react";
+import Header from './Task/Header'
 
-const Task = ({ showAddTask }) => {
+const Task = ({ }) => {
   const [tasks, setTasks] = useState([]);
+  const [showAddTask, setShowAddTask] = useState(false);
 
   //Fetch task
   const fetchtasks = async () => {
@@ -96,6 +98,10 @@ const Task = ({ showAddTask }) => {
     className="login-wrapper"
     style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
   >
+    <Header
+          onClick={() => setShowAddTask(!showAddTask)}
+          showAddTask={showAddTask}
+        ></Header>
     <div className="container row">
         {showAddTask && <AddTask onAdd={addtask} />}
         {tasks.length > 0 ? (

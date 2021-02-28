@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Login from "./components/Login";
@@ -8,33 +8,36 @@ import SignUp from "./components/SignUp";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
-  const [showAddTask, setShowAddTask] = useState(false);
-  const [buttonText,setButtontext] =useState('');
+  const [buttonText, setButtontext] = useState("");
+  const [text, setText] = useState("Sign up");
+  const onClick = () => {
+    if (window.location.pathname === "/") {
+      window.location = "/signup";
+      setText("Log In");
+    } else if (window.location.pathname === "/signup") {
+      window.location = "/";
+      setText("Sign Up");
+    } else if (window.location.pathname === "/task") {
+      window.location = "/";
+      setText("Log out");
+    }
+  };
 
   useEffect(() => {
-    if(window.location.pathname==='/')
-    setButtontext('Signup')
-    else if(window.location.pathname==='/task')
-    setButtontext('Add')
-  }, [])
+  }, []);
 
   const [token, setToken] = useState();
 
   return (
     <div className="maincontainer">
       <Router>
-        <Header
-          title="Task tracker"
-          onClick={() => setShowAddTask(!showAddTask)}
-          showAddTask={showAddTask}
-          text={buttonText}
-        ></Header>
+        <Header title="Task tracker" text={text} onClick={onClick}></Header>
         <Switch>
           <Route path="/" exact>
             <Login setToken={setToken} />
           </Route>
           <Route path="/task" exact>
-            <Task showAddTask={showAddTask} />
+            <Task />
           </Route>
           <Route path="/signup" exact>
             <SignUp />
