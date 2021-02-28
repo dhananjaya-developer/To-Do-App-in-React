@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:9000/.netlify/functions/server/login/
+POST http://localhost:9000/.netlify/functions/server/login/
 Content-Type: application/json
 
 {

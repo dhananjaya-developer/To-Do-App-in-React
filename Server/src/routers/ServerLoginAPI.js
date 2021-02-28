@@ -6,7 +6,7 @@ const cryptr = new Cryptr("P@ssw0rd");
 const UserSession = require("../model/UserSessionSchema");
 var randomstring = require("randomstring");
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   try {
     var users = await User.findOne({ username: username }).exec();
