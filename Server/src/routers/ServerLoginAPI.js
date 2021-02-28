@@ -46,11 +46,10 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.get("/session", async (req, res) => {
-  const { username, token } = req.body;
+router.post("/session", async (req, res) => {
+  const { token } = req.body;
   try {
     var session = await UserSession.findOne({
-      username: username,
       token: token,
     }).exec();
     if (!session) {
