@@ -1,9 +1,27 @@
-import React from "react";
+import {useState} from "react";
 import { Link, Redirect } from "react-router-dom";
 
 export default function Login() {
-  const a = () => {
-    console.log("a");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const a = async () => {
+    var user={}
+    user.username=username;
+    user.password=password;
+    const res = await fetch(
+      `https://tasktrackerserver.netlify.app/.netlify/functions/server/login`,
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    );
+    const data=await res.json();
+    if(data.token){
+      window.location='/task'
+    }
   };
   return (
     <div
@@ -13,7 +31,6 @@ export default function Login() {
       <h1>Please Log In</h1>
       <div className="container row">
         <div className="jumbotron col-sm-4 pull-center">
-          <form onSubmit={a} action='/task'>
             <div className="form-group">
               <label>Username:</label>
               <input
@@ -21,6 +38,8 @@ export default function Login() {
                 required
                 type="text"
                 name="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="form-group">
@@ -30,6 +49,8 @@ export default function Login() {
                 required
                 type="password"
                 name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="form-group">
@@ -38,10 +59,10 @@ export default function Login() {
                   className="btn btn-primary"
                   type="submit"
                   value="Log In"
+                  onClick={a}
                 />
               {/* </Link> */}
             </div>
-          </form>
         </div>
       </div>
     </div>

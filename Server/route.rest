@@ -1,7 +1,7 @@
 GET http://localhost:9000/.netlify/functions/server
 
 ###
-POST  https://brave-murdock-46d903.netlify.app/.netlify/functions/server
+POST  https://tasktrackerserver.netlify.app/.netlify/functions/server
 Content-Type: application/json
 
 {

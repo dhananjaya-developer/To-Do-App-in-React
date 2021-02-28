@@ -9,7 +9,7 @@ const Task = ({ showAddTask }) => {
   //Fetch task
   const fetchtasks = async () => {
     const res = await fetch(
-      "https://brave-murdock-46d903.netlify.app/.netlify/functions/server"
+      "https://tasktrackerserver.netlify.app/.netlify/functions/task"
     );
     const data = await res.json();
     return data;
@@ -26,7 +26,7 @@ const Task = ({ showAddTask }) => {
   //Fetch single  task
   const fetchtask = async (id) => {
     const res = await fetch(
-      `https://brave-murdock-46d903.netlify.app/.netlify/functions/server/${id}`
+      `https://tasktrackerserver.netlify.app/.netlify/functions/task/${id}`
     );
     const data = await res.json();
     return data;
@@ -38,7 +38,7 @@ const Task = ({ showAddTask }) => {
     const upTask = { ...taskToToggele, reminder: !taskToToggele.reminder };
 
     const res = await fetch(
-      `https://brave-murdock-46d903.netlify.app/.netlify/functions/server/${id}`,
+      `https://tasktrackerserver.netlify.app/.netlify/functions/task/${id}`,
       {
         method: "PUT",
         headers: {
@@ -64,7 +64,7 @@ const Task = ({ showAddTask }) => {
     // setTasks([...tasks,newtask]);
 
     const res = await fetch(
-      `https://brave-murdock-46d903.netlify.app/.netlify/functions/server`,
+      `https://tasktrackerserver.netlify.app/.netlify/functions/task`,
       {
         method: "POST",
         headers: {
@@ -82,7 +82,7 @@ const Task = ({ showAddTask }) => {
   //Delete task
   const deleteTask = async (id) => {
     await fetch(
-      `https://brave-murdock-46d903.netlify.app/.netlify/functions/server/${id}`,
+      `https://tasktrackerserver.netlify.app/.netlify/functions/task/${id}`,
       {
         method: "Delete",
       }
